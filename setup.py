@@ -4,11 +4,11 @@ setup(
     name='tordie',
     version='0.1.0',
     author='Moaesaycto',
-    author_email='your.email@example.com',
-    description='A library for creating and manipulating SVG graphics',
+    author_email='moaesaycto@gmail.com',
+    description='A library for creating and manipulating SVG graphics for Origami designs.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/yourusername/my_svg_lib',
+    url='https://github.com/Moaesaycto/Tordie5',
     packages=find_packages(),
     install_requires=[
         # Add your dependencies here
