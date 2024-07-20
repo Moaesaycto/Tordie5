@@ -1,7 +1,7 @@
 from .line import Line
-from .point import Point
+from .vertex import Vertex
 
 __all__ = [
     "Line",
-    "Point"
+    "Vertex"
 ]

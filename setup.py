@@ -11,7 +11,7 @@ setup(
     url='https://github.com/Moaesaycto/Tordie5',
     packages=find_packages(),
     install_requires=[
-        # 'numpy>=1.18.0',
+        'svgwrite>=1.4.3',
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

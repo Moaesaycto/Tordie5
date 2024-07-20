@@ -1,7 +1,7 @@
-from .points import CPoint
+from .points import Point
 from .lines import ELine
 
 __all__ = [
-    "CPoint",
+    "Point",
     "ELine"
 ]

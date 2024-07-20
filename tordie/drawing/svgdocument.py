@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
+from ..options import Options
 
 
 class SVGDocument(ABC):
+    def __init__(self, options):
+        self._options : Options = options
+
     @abstractmethod
     def save(self, filename: str):
         pass

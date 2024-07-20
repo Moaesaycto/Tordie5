@@ -1,8 +1,10 @@
-from .shapes import CPoint, ELine
+from .shapes import Point, ELine
 from .drawing import Drawing
+from .options import Options
 
 __all__ = [
-    "CPoint",
+    "Point",
     "ELine",
-    "Drawing"
+    "Drawing",
+    "Options"
 ]
