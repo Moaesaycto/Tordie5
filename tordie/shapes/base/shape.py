@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
-
 class Shape(ABC):
     @abstractmethod
-    def render(self):
+    def render(self, drawing: 'SVGDocument') -> None: # type: ignore
+        """Generate the SVG representation of the shape based on the drawing"""
         pass
 
     @abstractmethod

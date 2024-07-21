@@ -42,3 +42,20 @@ class Options():
         self.document_height = document_height
         self.document_bounds = document_bounds
         self.mathematics_scale = mathematics_scale
+
+    def relative(self, x: float, y: float) -> Tuple[float, float]:
+        """Calculate the relative position of a point in the drawing.
+
+        Args:
+            x (float): Coordinate x
+            y (float): Coordinate y
+
+        Returns:
+            Tuple[float]: Relative position of the point
+        """
+        return (
+            x / 2 * float(self.document_width / self.mathematics_scale[0]) + (
+                self.document_width + self.document_bounds) / 2,
+            -y / 2 * float(self.document_height / self.mathematics_scale[1]) + (
+                self.document_height + self.document_bounds) / 2
+        )
