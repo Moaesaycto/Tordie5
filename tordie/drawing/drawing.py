@@ -95,6 +95,18 @@ class Drawing(SVGDocument):
         for shape in shapes:
             self._shapes.append(shape)
 
+    def save(self, filename: str = "drawing.svg") -> None:
+        """Save the drawing to an SVG file.
+
+        Args:
+            filename (str, optional): Filename for saved SVG file. Defaults to "drawing.svg".
+        """
+        if not filename.endswith('.svg'):
+            filename += '.svg'
+        self.render()
+        if self._drawing:
+            self._drawing.saveas(filename)
+
     def remove_shape(self, shape: Shape) -> None:
         """Remove a shape from the drawing.
 

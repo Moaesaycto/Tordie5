@@ -2,7 +2,6 @@ from tordie.shapes.base.vertex import Vertex
 from math import cos, sin, atan2, sqrt
 from tordie.options import Options
 
-
 class Point(Vertex):
     def __init__(
         self,
@@ -21,14 +20,13 @@ class Point(Vertex):
             stroke (str, optional): The stroke color of the point. Defaults to 'black'.
             point_radius (float, optional): The radius of the point. Defaults to 5.0.
         """
+        super().__init__(stroke, point_radius)
         if polar:
             self._x = x * cos(y)
             self._y = x * sin(y)
         else:
             self._x = x
             self._y = y
-        self.stroke = stroke
-        self.point_radius = point_radius
 
     @property
     def x(self) -> float:
@@ -88,13 +86,15 @@ class Point(Vertex):
         """Render the point on an SVG drawing.
 
         Args:
-            drawing (SVGDocument): The SVG drawing to render the point on.
+            options (Options): The rendering options.
+
+        Returns:
+            str: SVG element as string.
         """
         cx, cy = options.relative(self.x, self.y)
 
-        stroke = options.stroke if self.stroke is None else self.stroke
-        point_radius = options.point_radius if self.point_radius is None else self.point_radius
+        stroke = self.determine_stroke(options)
+        point_radius = self.determine_point_radius(options)
 
-        svg_circle = f'<circle cx="{cx}" cy="{cy}" r="{point_radius}" fill="{
-            stroke}" stroke="{stroke}" stroke-width="0"/>'
+        svg_circle = f'<circle cx="{cx}" cy="{cy}" r="{point_radius}" fill="{stroke}" stroke="{stroke}" stroke-width="0"/>'
         return svg_circle

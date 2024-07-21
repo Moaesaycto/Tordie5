@@ -1,15 +1,17 @@
-from typing import Tuple
+from typing import List, Tuple
 
 # DEFAULT OPTIONS FOR TORDIE
 # GENERAL
 DEFAULT_FILENAME = "drawing.svg"
-DEFAULT_STROKE: str = "black"
 
 # POINT OPTIONS
 POINT_DEFAULT_RADIUS: int = 3
+POINT_DEFAULT_STROKE: str = "black"
 
 # LINE OPTIONS
 LINE_DEFAULT_WIDTH: int = 2
+LINE_DEFAULT_STROKE: str = "black"
+LINE_DEFAULT_STROKE_ALTS: List[str] = ["red", "blue", "black"]
 
 # DOCUMENT OPTIONS
 DOCUMENT_BACKGROUND: str = "white"
@@ -24,18 +26,23 @@ class Options():
     def __init__(
         self,
         filename: str = DEFAULT_FILENAME,
-        stroke: str = DEFAULT_STROKE,
         stroke_width: int = LINE_DEFAULT_WIDTH,
         point_radius: int = POINT_DEFAULT_RADIUS,
+        point_stroke: str = POINT_DEFAULT_STROKE,
+        line_stroke: str = LINE_DEFAULT_STROKE,
+        line_stroke_alts: List[str] = LINE_DEFAULT_STROKE_ALTS,
         document_background: str = DOCUMENT_BACKGROUND,
         document_width: int = DOCUMENT_WIDTH,
         document_height: int = DOCUMENT_HEIGHT,
         document_bounds: int = DOCUMENT_BOUNDS,
         mathematics_scale: Tuple[int, int] = MATHEMATICS_SCALE,
+    
     ) -> None:
         self.filename = filename
-        self.stroke = stroke
         self.point_radius = point_radius
+        self.point_stroke = point_stroke
+        self.line_stroke = line_stroke
+        self.line_stroke_alts = line_stroke_alts
         self.stroke_width = stroke_width
         self.document_background = document_background
         self.document_width = document_width

@@ -1,6 +1,6 @@
-from tordie.shapes.base import Vertex, Line
+from tordie.shapes.base import Vertex
 from tordie.options import Options
-
+from tordie.shapes.base import Line
 
 class ELine(Line):
     def __init__(
@@ -8,6 +8,9 @@ class ELine(Line):
         start: Vertex,
         end: Vertex,
         show_ends: bool = False,
+        stroke: str = None,
+        stroke_width: float = None,
+        alt: int = 0
     ) -> None:
         """Create a new Euclidean line.
 
@@ -16,9 +19,9 @@ class ELine(Line):
             end (Vertex): End of the line.
             show_ends (bool, optional): If True, show the start and end points of the line. Defaults to False.
         """
+        super().__init__(stroke, stroke_width, alt)
         self.start = start
         self.end = end
-        
         self.show_ends = show_ends
 
     def render(self, options: Options) -> str:
@@ -33,10 +36,13 @@ class ELine(Line):
         startx, starty = options.relative(self.start.x, self.start.y)
         endx, endy = options.relative(self.end.x, self.end.y)
         
+        stroke = self.determine_stroke(options)
+        stroke_width = self.determine_stroke_width(options)
+        
         line_svg = (f'<line x1="{startx}" y1="{starty}" '
                     f'x2="{endx}" y2="{endy}" '
-                    f'stroke="{options.stroke}" '
-                    f'stroke-width="{options.stroke_width}" />')
+                    f'stroke="{stroke}" '
+                    f'stroke-width="{stroke_width}" />')
         
         if self.show_ends:
             start_svg = self.start.render(options)
