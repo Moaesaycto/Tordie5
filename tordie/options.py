@@ -25,8 +25,8 @@ class Options():
         self,
         filename: str = DEFAULT_FILENAME,
         stroke: str = DEFAULT_STROKE,
+        stroke_width: int = LINE_DEFAULT_WIDTH,
         point_radius: int = POINT_DEFAULT_RADIUS,
-        line_width: int = LINE_DEFAULT_WIDTH,
         document_background: str = DOCUMENT_BACKGROUND,
         document_width: int = DOCUMENT_WIDTH,
         document_height: int = DOCUMENT_HEIGHT,
@@ -36,7 +36,7 @@ class Options():
         self.filename = filename
         self.stroke = stroke
         self.point_radius = point_radius
-        self.line_width = line_width
+        self.stroke_width = stroke_width
         self.document_background = document_background
         self.document_width = document_width
         self.document_height = document_height

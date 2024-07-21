@@ -109,10 +109,9 @@ class Drawing(SVGDocument):
         self._shapes.clear()
 
     def render(self) -> None:
-        """Render the drawing to an SVG document
-        """
+        """Render the drawing to an SVG document."""
         self._drawing = SVGDrawing(size=(f"{self._options.document_width + self._options.document_bounds}px",
-                                        f"{self._options.document_height + self._options.document_bounds}px"))
+                                         f"{self._options.document_height + self._options.document_bounds}px"))
         self._drawing.add(
             self._drawing.rect(
                 insert=(0, 0),
@@ -131,7 +130,11 @@ class Drawing(SVGDocument):
         }
 
         for shape in self._shapes:
-            element = ET.fromstring(shape.render(self._options))
-            tag = element.tag.split('}')[-1]  # Remove namespace if present
-            if tag in shape_funcs:
-                self._drawing.add(shape_funcs[tag](element.attrib))
+            svg_elements = shape.render(self._options)
+            
+            # Wrap multiple elements in a root element
+            elements = ET.fromstring(f"<root>{svg_elements}</root>")
+            for element in elements:
+                tag = element.tag.split('}')[-1]  # Remove namespace if present
+                if tag in shape_funcs:
+                    self._drawing.add(shape_funcs[tag](element.attrib))
